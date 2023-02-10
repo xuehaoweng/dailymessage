@@ -8,3 +8,15 @@ git config --global --unset http.proxy
  
 git config --global --unset https.proxy
 然后再push，就很nice!
+
+
+使用git命令关闭网络代理再重新打开命令行窗口
+
+1）命令行输入以下
+
+git config --global http.sslVerifyfalse
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+git config --global http.sslBackend "openssl"
+
+2）重启命令行窗口，重新git push
