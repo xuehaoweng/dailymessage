@@ -20,8 +20,7 @@ net.ipv4.ip_local_port_range = 10000 65000 -----意味着10000~65000端口可用
 可以使用cat -v 文件名 来查看换行符是否是，如果是上述的，则行结尾会是^m 需要转换成linux/unix格式的”\n”；
 
 具体转换办法就是转换换行符 。
-
-可以用sed命令处理一下文件，命令如下： 
+方法一、可以用sed命令处理一下文件，命令如下： 
 
 sed ‘s/\r//’ 原文件 >转换后文件 ；
 
@@ -32,3 +31,11 @@ sed 命令的参数中 ”代表决定引用参数，不允许参数中的值让
 我比较喜欢EditPlus的join lines功能，把多行的值变成一个逻辑行，便于写到shell脚本中作为循环的变量。
 
  sed 's/\r//' xxx.sh > xxx.sh
+
+ 方法二、使用dos2unix工具进行处理。
+再linux上安装dos2unix工具：sudo yum install dos2unix（根据系统使用不同命令安装）
+
+安装成功后可以定义一个shell脚本，或者手动执行一下命令
+
+dos2unix  *.sh
+
